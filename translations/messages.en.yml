@@ -1,0 +1,41 @@
+
+login:
+    window: login
+    email:  email
+    password: Password
+    remember: Remember my login on this computer
+    forget: Forgot Password?
+    login:  login
+    error: username or password is wrong
+register:
+    username: Username
+    window: Sign up
+    register: Create My Account
+    email:  Email
+    password: Password
+    secondpassword: Confirm PW
+    roles: I am a
+    country: Country
+    submit: Create My Account
+    advertiser: Advertiser
+    publisher: Publisher
+    choose: Please choose a role
+    countryChoose: Please choose country
+chart:
+    request: Request
+    response: Response
+    impression: Impression
+    conversion: Conversion
+    click: Click
+    ctr: CTR
+    cvr: CVR
+    ecpm: ECPM
+    all: All Property
+property:
+    pkgName: Package Name
+adgroup:
+    arrive: Arrive to AdGroup
+admin:
+    Product: Product
+    Description: Description
+Product: Product

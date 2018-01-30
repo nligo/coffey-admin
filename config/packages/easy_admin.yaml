@@ -1,5 +1,5 @@
 easy_admin:
-    site_name: 'coffey-Admin'
+    site_name: '飞羽后台管理系统'
     design:
             brand_color: '#1ABC9C'
     entities:
@@ -7,6 +7,3 @@ easy_admin:
 
           # List the entity class name you want to manage
           class: App\Entity\Product
-          label: '产品'
-          list:
-              title: "产品"

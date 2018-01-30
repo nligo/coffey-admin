@@ -1,0 +1,33 @@
+
+login:
+    window: 登陆
+    register: 注册
+    email:  邮箱
+    password: 密码
+    remember: 记住密码
+    forget: 忘记密码？
+    login:  登陆
+    error: 用户名或者密码错误
+register:
+    window: 注册
+    username: 用户名
+    email:  邮箱
+    password: 密码
+    secondpassword: 确认密码
+    roles: 我是
+    login:  登陆
+    country: 国家
+    submit: 创建账户
+    advertiser: 广告主
+    publisher: 渠道
+
+    choose: 请选择角色
+    countryChoose: 请选择国家
+admin:
+    Product: 产品
+    Description: 米娜书
+
+Product:  产品
+ID: 编号
+Name: 名称
+Price: 价格
