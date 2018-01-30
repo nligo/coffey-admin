@@ -1,0 +1,12 @@
+easy_admin:
+    site_name: 'coffey-Admin'
+    design:
+            brand_color: '#1ABC9C'
+    entities:
+        Product:
+
+          # List the entity class name you want to manage
+          class: App\Entity\Product
+          label: '产品'
+          list:
+              title: "产品"
