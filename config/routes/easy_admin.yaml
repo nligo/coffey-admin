@@ -2,6 +2,7 @@ easy_admin_bundle:
     resource: '@EasyAdminBundle/Controller/AdminController.php'
     prefix: /{_locale}/admin
     type: annotation
+    host: '%admin_domain%'
     defaults:
         _locale: zh_CN
         path: /zh_CN/admin

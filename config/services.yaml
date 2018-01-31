@@ -4,7 +4,11 @@ parameters:
     locale: zh_CN
     app_locales: en|zh_CN
     table_prefix: ca_
+    # 前端页面域名
+    domain: '%env(DOMAIN)%'
 
+    # 后台管理系统域名
+    admin_domain: '%env(ADMIN_DOMAIN)%'
 services:
     _defaults:
         autowire: true
