@@ -17,7 +17,7 @@
 **3.创建数据库，更新数据表**
 
 >     bin/console doctrine:database:create
->     bin/console doctrine:schme:update -f
+>     bin/console doctrine:schema:update -f
 
 
 **然后访问http://your.domain.com/admin 就可以看到**
