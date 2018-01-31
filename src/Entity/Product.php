@@ -6,10 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="product")
+ * @ORM\Table(options={"comment": "产品表"})
  */
-class Product
+class Product implements _CreatableInterface,_UpdatableInterface
 {
+    use _CreatableTrait,_UpdatableTrait;
+
+
+    const ON_PRE_CREATED = 'pre_created'; // 创建事件名称
+    const ON_PRE_UPDATED = 'pre_updated'; // 更新事件名称
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id

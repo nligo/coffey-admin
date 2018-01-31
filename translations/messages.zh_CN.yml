@@ -33,3 +33,9 @@ Name: 名称
 Price: 价格
 This is product list: 这是一个产品列表
 Description:  描述
+User:  用户
+Role:  角色
+Created at:  创建时间
+Updated at:  更新时间
+Deleted at:  删除时间
+Identify: 唯一标识

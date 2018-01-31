@@ -35,7 +35,16 @@ property:
     pkgName: Package Name
 adgroup:
     arrive: Arrive to AdGroup
-admin:
-    Product: Product
-    Description: Description
-Product: Product
+
+Product:  Product
+ID: ID
+Name: Name
+Price: Price
+This is product list: This is product list
+Description:  Description
+User:  User
+Role:  Role
+Created at:  Created at
+Updated at:  Updated at
+Deleted at:  Deleted at
+Identify:   Identify

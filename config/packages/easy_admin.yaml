@@ -11,7 +11,9 @@ easy_admin:
             rtl: false
     entities:
         Product:
-
           # List the entity class name you want to manage
           class: App\Entity\Product
           help: 'This is product list'
+        User:
+          # List the entity class name you want to manage
+          class: App\Entity\User
