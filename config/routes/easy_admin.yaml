@@ -1,8 +1,9 @@
 easy_admin_bundle:
     resource: '@EasyAdminBundle/Controller/AdminController.php'
-    prefix: /admin/{_locale}
+    prefix: /{_locale}/admin
     type: annotation
     defaults:
         _locale: zh_CN
+        path: /zh_CN/admin
     requirements:
-        _locale:  zh_CN|en
+        _locale: '%app_locales%'

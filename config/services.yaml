@@ -2,6 +2,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: zh_CN
+    app_locales: en|zh_CN
     table_prefix: ca_
 
 services:
