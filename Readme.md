@@ -20,7 +20,7 @@
 >     bin/console doctrine:schema:update -f
 
 
-**然后访问http://your.domain.com/admin 就可以看到**
+**然后访问http://your.domain.com/admin/zh_CN 就可以看到**
 
 
 
