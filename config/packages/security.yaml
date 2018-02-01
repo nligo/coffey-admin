@@ -1,11 +1,28 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\User:
+            algorithm: plaintext
+
     providers:
-        in_memory: { memory: ~ }
+        db_provider:
+            entity: { class: App\Entity\User, property: username }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        easy_admin:
+            pattern: ^/
+            anonymous: ~
+            logout_on_user_change: true
+            form_login:
+                default_target_path: admin_login
+                login_path: admin_login
+                check_path: admin_login
+            logout:
+                path:   admin_logout
+                target: admin_login
+            anonymous: ~
         main:
             anonymous: ~
 
@@ -16,3 +33,6 @@ security:
 
             # form_login: ~
             # https://symfony.com/doc/current/security/form_login_setup.html
+    access_control:
+      - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/admin/, role: ROLE_ADMIN }

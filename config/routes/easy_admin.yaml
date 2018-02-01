@@ -1,10 +1,20 @@
 easy_admin_bundle:
     resource: '@EasyAdminBundle/Controller/AdminController.php'
-    prefix: /{_locale}/admin
+    prefix: /admin/{_locale}
     type: annotation
     host: '%admin_domain%'
     defaults:
         _locale: zh_CN
-        path: /zh_CN/admin
+        path: /admin/zh_CN
     requirements:
         _locale: '%app_locales%'
+
+admin_login:
+    path: /login
+    host: '%admin_domain%'
+    controller: App\Controller\Admin\SecurityController::login
+
+admin_logout:
+    path: /logout
+    host: '%admin_domain%'
+    controller: App\Controller\Admin\SecurityController::logout

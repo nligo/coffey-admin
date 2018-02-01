@@ -10,11 +10,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  *
- * @UniqueEntity("identify")
+ * @UniqueEntity("username")
  */
-class User implements UserInterface, _CreatableInterface, _DeletableInterface
+class User implements UserInterface, _CreatableInterface
 {
-    use _CreatableTrait, _DeletableTrait;
+    use _CreatableTrait;
 
     const ON_PRE_CREATED = 'pre_created'; // 创建事件名称
     const ON_PRE_UPDATED = 'pre_updated'; // 更新事件名称
@@ -33,20 +33,17 @@ class User implements UserInterface, _CreatableInterface, _DeletableInterface
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=32, unique=true, options={"fixed": true, "comment": "用户名"})
+     */
+    private $username = "";
+
+
+    /**
      * @ORM\Column(type="string", length=32, options={"fixed": true})
      *
      * @Assert\NotBlank(groups={"role"})
      */
     private $role;
-
-    /**
-     * @ORM\Column(type="string", length=32, unique=true, options={"fixed": true, "comment": "唯一标识"})
-     *
-     * @Assert\NotBlank(groups={"identify"})
-     * @Assert\Length(min=4, max=16, groups={"identify"})
-     * @Assert\Regex(pattern="/[0-9A-Za-z.-_]$/", message="user_identify_rule", groups={"identify"})
-     */
-    private $identify;
 
     /**
      * @ORM\Column(type="string", length=60, options={"comment": "登录密码"})
@@ -64,9 +61,11 @@ class User implements UserInterface, _CreatableInterface, _DeletableInterface
      */
     private $plainPassword;
 
-    public function __construct($identify = null, $plainPassword = null, $role = self::ROLE_ADMIN)
+    private $passwordEncoder;
+
+    public function __construct($username = null, $plainPassword = null, $role = self::ROLE_ADMIN)
     {
-        $this->identify = $identify;
+        $this->username = $username;
         $this->plainPassword = $plainPassword;
 
         $this->setRole($role);
@@ -100,17 +99,7 @@ class User implements UserInterface, _CreatableInterface, _DeletableInterface
         return (array) $this->role;
     }
 
-    public function setIdentify($identify)
-    {
-        $this->identify = $identify;
 
-        return $this;
-    }
-
-    public function getIdentify()
-    {
-        return $this->identify;
-    }
 
     public function setPassword($password)
     {
@@ -141,9 +130,16 @@ class User implements UserInterface, _CreatableInterface, _DeletableInterface
         return;
     }
 
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
     public function getUsername()
     {
-        return $this->identify;
+        return $this->username;
     }
 
     public function eraseCredentials()
