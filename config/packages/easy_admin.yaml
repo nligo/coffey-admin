@@ -6,7 +6,7 @@ easy_admin:
         datetime: 'd/m/Y H:i:s'
         number: '%.2f'
     design:
-            brand_color: '#1ABC9C'
+            brand_color: '#343A40'
             color_scheme: 'light'
             rtl: false
     entities:
