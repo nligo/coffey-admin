@@ -21,6 +21,18 @@
                 <h1 class="text-center text-dark mb-5">
                     {{ site_name }}
                 </h1>
+                {% if error %}
+                <div class="row clearfix">
+                    <div class="col-md-12 column">
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
+                                {{ error.message|trans }}
+
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
                 <div class="form-group">
                     <div class="input-group input-group-lg">
                         <div class="input-group-prepend">
