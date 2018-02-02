@@ -1,13 +1,13 @@
 <?php
 
-namespace App\EventListener;
+namespace App\EventListener\EasyAdmin;
 
 use App\Entity\User;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class UserPasswordSubscriber implements EventSubscriberInterface
+class UserSubscriber implements EventSubscriberInterface
 {
     protected $passwordEncoder;
 
@@ -18,21 +18,22 @@ class UserPasswordSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return [
-            User::ON_PRE_CREATED => 'encodeUserPassword',
-            User::ON_PRE_UPDATED => 'encodeUserPassword',
-        ];
+        return array(
+            'easy_admin.pre_persist' => array('encodePassword'),
+            'easy_admin.pre_update' => array('encodePassword'),
+        );
     }
 
-    public function encodeUserPassword(GenericEvent $event)
+    public function encodePassword(GenericEvent $event)
     {
         $user = $event->getSubject();
-        if (!$user instanceof User) {
+
+        if (!($user instanceof User)) {
             return;
         }
 
-        if (null !== $plainPassword = $user->getPlainPassword()) {
-            $password = $this->passwordEncoder->encodePassword($user, $plainPassword);
+        if (null !== $password = $user->getPassword()) {
+            $password = $this->passwordEncoder->encodePassword($user, $password);
             $user->setPassword($password);
         }
     }
