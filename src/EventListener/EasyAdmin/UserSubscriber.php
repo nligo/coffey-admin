@@ -3,8 +3,10 @@
 namespace App\EventListener\EasyAdmin;
 
 use App\Entity\User;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserSubscriber implements EventSubscriberInterface
@@ -19,12 +21,11 @@ class UserSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'easy_admin.pre_persist' => array('encodePassword'),
-            'easy_admin.pre_update' => array('encodePassword'),
+            'easy_admin.pre_persist' => array('prePersist'),
         );
     }
 
-    public function encodePassword(GenericEvent $event)
+    public function prePersist(GenericEvent $event)
     {
         $user = $event->getSubject();
 

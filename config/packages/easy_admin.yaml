@@ -14,6 +14,8 @@ easy_admin:
           # List the entity class name you want to manage
           class: App\Entity\Product
           help: 'This is product list'
+          list:
+              title: '%%entity_label%%'
         User:
           # List the entity class name you want to manage
           class: App\Entity\User
