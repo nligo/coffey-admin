@@ -1,0 +1,15 @@
+easy_admin:
+    site_name: '%env(SITE_NAME)%'
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+        number: '%.2f'
+    design:
+            brand_color: '#343A40'
+            color_scheme: 'light'
+            rtl: false
+            assets:
+                js:
+                    - '/libs/ckeditor/ckeditor.js'
+                    - '/adminAssets/js/ckeditor.js'

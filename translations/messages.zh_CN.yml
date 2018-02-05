@@ -1,37 +1,18 @@
 
-login:
-    window: 登陆
-    register: 注册
-    email:  邮箱
-    password: 密码
-    remember: 记住密码
-    forget: 忘记密码？
-    login:  登陆
-    error: 用户名或者密码错误
-register:
-    window: 注册
-    username: 用户名
-    email:  邮箱
-    password: 密码
-    secondpassword: 确认密码
-    roles: 我是
-    login:  登陆
-    country: 国家
-    submit: 创建账户
-    advertiser: 广告主
-    publisher: 渠道
 
-    choose: 请选择角色
-    countryChoose: 请选择国家
-admin:
-    Product: 产品
-    Description: 米娜书
-
-Product:  产品
+menu.article.list: 文章列表
+menu.category: 栏目列表
+menu.article.add: 发布文章
+menu.article: 文章
+menu.customer: 用户
+Categories: 分类
+Parent category: 父级栏目
+Articles: 文章数
+Article:  文章
 ID: 编号
 Name: 名称
 Price: 价格
-This is product list: 这是一个产品列表
+This is article list: 这是一个文章列表
 Description:  描述
 User:  用户
 Role:  角色
@@ -40,3 +21,7 @@ Updated at:  更新时间
 Deleted at:  删除时间
 Identify: 唯一标识
 Bad credentials.: 用户名或密码错误.
+Category: 栏目
+Is up: 是否置顶
+Is support: 是否推荐
+Release at: 发布时间
