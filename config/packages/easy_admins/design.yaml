@@ -10,6 +10,7 @@ easy_admin:
             color_scheme: 'light'
             rtl: false
             assets:
+                css:
                 js:
                     - '/libs/ckeditor/ckeditor.js'
                     - '/adminAssets/js/ckeditor.js'

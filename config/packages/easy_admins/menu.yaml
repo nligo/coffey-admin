@@ -14,7 +14,7 @@ easy_admin:
             - label: 'menu.article'
               icon: 'shopping-basket'
               children:
-                  - { entity: 'Article', icon: 'th-list', label: 'menu.article.list', params: { sortField: 'createdAt' }, default: true }
+                  - { entity: 'Article', icon: 'th-list', label: 'menu.article.list', params: { sortField: 'createdAt' }}
                   - { entity: 'Category', icon: 'tags', label: 'menu.category' }
                   - { entity: 'Article', icon: 'plus-circle', label: 'menu.article.add', params: { action: 'new' } }
             - { label: 'menu.customer', entity: 'User', icon: 'users' }

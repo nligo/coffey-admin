@@ -7,6 +7,8 @@
 # The configuration options are explained in detail in the bundle documentation,
 # which is published at https://github.com/javiereguiluz/EasyAdminBundle
 easy_admin:
+    list:
+        actions: ['show','edit', 'search', 'delete']
     entities:
         # the configuration of this entity is very verbose because it's used as
         # an example to show all the configuration options available for entities
@@ -16,10 +18,11 @@ easy_admin:
             class: App\Entity\Article
             title: '%%entity_label%%'
             actions:
-                - { name: 'show', label: 'show', icon: 'search' }
+                - { name: 'show', icon: 'search' }
                 - { name: 'edit', label: 'edit', icon: 'edit' }
                 - { name: 'delete', label: 'delete', icon: 'trash' }
             show:
+                title: '%%entity_label%% (#%%entity_id%%)'
                 fields:
                     - 'id'
                     - 'name'
@@ -44,5 +47,6 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-4', label: '文章设置', icon: 'cube' }
                     - { property: 'isUp', help: '是否置顶.' }
                     - { property: 'isSupport', help: '是否推荐.' }
-                    - { property: 'type', help: '是否可见.',label: '是否可见',}
+                    - { property: 'type', help: '是否可见.',label: '是否可见'}
                     - { property: 'releaseAt',css_class: 'col-sm-12', }
+                actions:
