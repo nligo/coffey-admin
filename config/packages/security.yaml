@@ -1,11 +1,14 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     encoders:
+        App\Entity\AdminUser:
+            algorithm: bcrypt
         App\Entity\User:
             algorithm: bcrypt
-
     providers:
-        db_provider:
+        admin_user:
+            entity: { class: App\Entity\AdminUser, property: username }
+        user:
             entity: { class: App\Entity\User, property: username }
     firewalls:
         dev:
@@ -14,6 +17,7 @@ security:
         easy_admin:
             pattern: ^/
             anonymous: ~
+            provider: admin_user
             logout_on_user_change: true
             form_login:
                 default_target_path: admin_login

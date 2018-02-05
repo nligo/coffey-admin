@@ -60,9 +60,16 @@ class Article implements _CreatableInterface, _UpdatableInterface
      */
     private $categories;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
+     */
+    private $comments;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function __toString()
@@ -194,5 +201,27 @@ class Article implements _CreatableInterface, _UpdatableInterface
     public function removeCategory(Category $category)
     {
         $this->categories->removeElement($category);
+    }
+
+    public function hasComment()
+    {
+        return !$this->comments->isEmpty();
+    }
+
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

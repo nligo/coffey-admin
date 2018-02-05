@@ -14,8 +14,8 @@ easy_admin:
         # an example to show all the configuration options available for entities
         # check out the configuration of the other entities to see how concise
         # can be the configuration of your backend
-        Article:
-            class: App\Entity\Article
+        Comment:
+            class: App\Entity\Comment
             title: '%%entity_label%%'
             actions:
                 - { name: 'show', icon: 'search' }
@@ -25,29 +25,26 @@ easy_admin:
                 title: '%%entity_label%% (#%%entity_id%%)'
                 fields:
                     - 'id'
-                    - 'name'
+                    - 'article'
                     - { property: 'content', type: 'raw' }
-                    - 'releaseAt'
-                    - 'updatedAt'
+                    - 'user'
+                    - 'type'
+                    - 'createdAt'
             list:
                 fields:
                     - 'id'
-                    - 'name'
-                    - { property: 'type', label: '私有模式' }
-                    - { property: 'isUp', label: '是否置顶' }
-                    - { property: 'isSupport', label: '是否推荐' }
-                    - { property: 'categories',label: '所属栏目' }
-                    - { property: 'comments',label: '评论数' }
+                    - { property: 'article', label: '文章' }
+                    - { property: 'user', label: '评论人' }
+                    - { property: 'type', label: '隐私留言' }
+                    - { property: 'createdAt',label: '创建时间' }
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-8', label: '主要信息', icon: 'pencil' }
-                    - { property: 'name', css_class: 'large' }
-                    - { property: 'content', id: 'editor', type: 'textarea' }
+                    - { property: 'article'}
+                    - { property: 'content', type: 'textarea' }
+                    - { property: 'parent' }
                     - { type: 'divider' }
-                    - { property: 'categories', type: 'easyadmin_autocomplete' }
-                    - { type: 'group', css_class: 'col-sm-4', label: '文章设置', icon: 'cube' }
-                    - { property: 'isUp', help: '是否置顶.' }
-                    - { property: 'isSupport', help: '是否推荐.' }
-                    - { property: 'type', help: '是否可见.',label: '是否可见'}
-                    - { property: 'releaseAt',css_class: 'col-sm-12', }
+                    - { property: 'user', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-4', label: '留言设置', icon: 'cube' }
+                    - { property: 'type', help: '仅博主可见.' }
                 actions:

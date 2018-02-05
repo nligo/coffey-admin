@@ -17,4 +17,9 @@ easy_admin:
                   - { entity: 'Article', icon: 'th-list', label: 'menu.article.list', params: { sortField: 'createdAt' }}
                   - { entity: 'Category', icon: 'tags', label: 'menu.category' }
                   - { entity: 'Article', icon: 'plus-circle', label: 'menu.article.add', params: { action: 'new' } }
-            - { label: 'menu.customer', entity: 'User', icon: 'users' }
+                  - { entity: 'Comment', icon: 'fa fa-comments', label: 'menu.comments', params: { sortField: 'createdAt' }}
+            - label: 'menu.user_ctrl'
+              icon: 'users'
+              children:
+                  - { entity: 'AdminUser', icon: 'users', label: 'menu.admin_user', params: { sortField: 'createdAt' }}
+                  - { entity: 'User', icon: 'user', label: 'menu.user' }

@@ -19,10 +19,10 @@ class User implements UserInterface, _CreatableInterface
     const ON_PRE_CREATED = 'pre_created'; // 创建事件名称
     const ON_PRE_UPDATED = 'pre_updated'; // 更新事件名称
 
-    const ROLE_ADMIN = 'ROLE_ADMIN'; // 管理员
+    const ROLE_USER = 'ROLE_USER'; // 管理员
 
     public static $roles = [
-        self::ROLE_ADMIN => '管理员',
+        self::ROLE_USER => '用户',
     ];
 
     /**
@@ -37,6 +37,36 @@ class User implements UserInterface, _CreatableInterface
      */
     private $username = "";
 
+    /**
+     * @ORM\Column(type="string", length=32, unique=true, options={"fixed": true, "comment": "邮箱"})
+     */
+    private $email = "";
+
+    /**
+     * @ORM\Column(type="string", length=20, unique=true, options={"fixed": true, "comment": "手机号"})
+     */
+    private $phone = "";
+
+    /**
+     * @ORM\Column(type="boolean", options={"comment": "是否激活"})
+     */
+    private $isActive = false;
+
+    /**
+     * @ORM\Column(type="string", length=64, options={"comment": "激活Token"})
+     */
+    private $confirmToken = "";
+
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true,options={"comment": "token有效时长"})
+     */
+    private $tokenVaildAt;
+
+    /**
+     * @ORM\Column(type="string", length=60, options={"comment": "登录密码"})
+     */
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=32, options={"fixed": true})
@@ -45,37 +75,18 @@ class User implements UserInterface, _CreatableInterface
      */
     private $role;
 
-    /**
-     * @ORM\Column(type="string", length=60, options={"comment": "登录密码"})
-     */
-    private $password;
-
-    /**
-     * 用户明文密码
-     *
-     * @var string 明文密码
-     *
-     * @Assert\NotBlank(groups={"plainPassword"})
-     * @Assert\Length(min=6, max=16, groups={"plainPassword"})
-     * @Assert\Regex("/[0-9A-Za-z.-_]$/", message="user_password_rule", groups={"plainPassword"})
-     */
-    private $plainPassword;
-
-    private $passwordEncoder;
-
-    public function __construct($username = null, $plainPassword = null, $role = self::ROLE_ADMIN)
+    public function __construct($username = null, $password = null, $role = self::ROLE_USER)
     {
         $this->username = $username;
-        $this->plainPassword = $plainPassword;
+        $this->password = $password;
 
         $this->setRole($role);
     }
 
-    public function getId()
+    public function __toString()
     {
-        return $this->id;
+        return $this->username;
     }
-
     public function setRole($role)
     {
         $this->role = $role;
@@ -99,47 +110,130 @@ class User implements UserInterface, _CreatableInterface
         return (array) $this->role;
     }
 
-
-
-    public function setPassword($password)
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
-        $this->password = $password;
-
-        return $this;
+        return $this->id;
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getisActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param mixed $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmToken()
+    {
+        return $this->confirmToken;
+    }
+
+    /**
+     * @param mixed $confirmToken
+     */
+    public function setConfirmToken($confirmToken)
+    {
+        $this->confirmToken = $confirmToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTokenVaildAt()
+    {
+        return $this->tokenVaildAt;
+    }
+
+    /**
+     * @param mixed $tokenVaildAt
+     */
+    public function setTokenVaildAt($tokenVaildAt)
+    {
+        $this->tokenVaildAt = $tokenVaildAt;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getPassword()
     {
         return $this->password;
     }
 
-    public function setPlainPassword($plainPassword)
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
     {
-        $this->plainPassword = $plainPassword;
-
-        return $this;
-    }
-
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
+        $this->password = $password;
     }
 
     public function getSalt()
     {
         return;
-    }
-
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    public function getUsername()
-    {
-        return $this->username;
     }
 
     public function eraseCredentials()

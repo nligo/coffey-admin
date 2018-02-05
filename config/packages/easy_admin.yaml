@@ -7,7 +7,7 @@
 #         - AppBundle\Entity\Product
 #         - AppBundle\Entity\Purchase
 #         - AppBundle\Entity\PurchaseItem
-#         - AppBundle\Entity\User
+#         - AppBundle\Entity\AdminUser
 #
 # In this demo application, the configuration is split into several small files
 # to show an alternative way to define the configuration for complex backends.

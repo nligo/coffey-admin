@@ -2,11 +2,15 @@ menu.article.list: 文章列表
 menu.category: 栏目列表
 menu.article.add: 发布文章
 menu.article: 文章
-menu.customer: 用户
+menu.admin_user: 系统用户
+menu.user_ctrl: 用户系统
+menu.user: 用户管理
+menu.comments: 评论管理
 Categories: 分类
 Parent category: 父级栏目
 Articles: 文章数
 Article:  文章
+Comment:  评论
 ID: 编号
 Name: 名称
 Price: 价格
@@ -14,6 +18,11 @@ This is article list: 这是一个文章列表
 Description:  描述
 Customers:  用户
 User:  用户
+Password: 密码
+Email: 邮箱
+Phone: 手机号
+AdminUser: 系统用户
+admin_user: 系统用户
 Username:  用户名
 Role:  角色
 Created at:  创建时间

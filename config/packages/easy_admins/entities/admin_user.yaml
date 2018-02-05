@@ -9,10 +9,10 @@
 # which is published at https://github.com/javiereguiluz/EasyAdminBundle
 easy_admin:
     entities:
-        User:
-            class: App\Entity\User
+        AdminUser:
+            class: App\Entity\AdminUser
             list:
-                title: 'User'
+                title: 'AdminUser'
                 actions:
                     - { name: 'show',  icon: 'search' }
                     - { name: 'delete', icon: 'trash' }
@@ -23,14 +23,13 @@ easy_admin:
                     - 'role'
                     - 'createdAt'
                     - 'updatedAt'
+                    - 'role'
 
             form:
                 fields:
-                    - { type: 'group', label: '账号信息', icon: 'user', css_class: 'col-sm-6' }
+                    - { type: 'group', label: 'Account Information', icon: 'user', css_class: 'col-sm-4' }
                     - { property: 'username' }
+                    - { property: 'role', type: 'choice',type_options: { expanded: true,choices: '%USER_ROLES%'} }
+                    - { type: 'group', label: 'Contact Information', icon: 'envelope-o', css_class: 'col-sm-4' }
                     - { property: 'password' }
-                    - { type: 'group', label: '详细信息', icon: 'envelope-o', css_class: 'col-sm-6' }
-                    - { property: 'email',type: 'email' }
-                    - { property: 'phone'}
-                    - { property: 'isActive',label: '是否激活' }
 
