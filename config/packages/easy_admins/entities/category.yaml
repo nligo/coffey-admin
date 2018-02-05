@@ -14,9 +14,9 @@ easy_admin:
             list:
                 title: '%%entity_label%%'
                 actions:
-                    - { name: 'show', label: 'show', icon: 'search' }
-                    - { name: 'edit', label: 'edit', icon: 'edit' }
-                    - { name: 'delete', label: 'delete', icon: 'trash' }
+                    - { name: 'show',  icon: 'search' }
+                    - { name: 'edit', icon: 'edit' }
+                    - { name: 'delete',  icon: 'trash' }
                 fields:
                     - 'id'
                     - { property: 'name' }
