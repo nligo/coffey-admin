@@ -17,6 +17,8 @@ easy_admin:
                     - { name: 'show',  icon: 'search' }
                     - { name: 'delete', icon: 'trash' }
                     - '-edit'
+            search:
+                fields: ['username', 'email','phone', 'isActive']
             show:
                 fields:
                     - 'username'

@@ -18,7 +18,7 @@ easy_admin:
             class: App\Entity\Article
             title: '%%entity_label%%'
             actions:
-                - { name: 'show', icon: 'search' }
+                - { name: 'show', icon: 'search' ,roles: ['ROLE_TEST']}
                 - { name: 'edit', label: 'edit', icon: 'edit' }
                 - { name: 'delete', label: 'delete', icon: 'trash' }
             show:
@@ -26,13 +26,17 @@ easy_admin:
                 fields:
                     - 'id'
                     - 'name'
+                    - 'author'
                     - { property: 'content', type: 'raw' }
+                    - { property: 'cover', type: 'image', base_path: '%app.path.article_images%' }
                     - 'releaseAt'
                     - 'updatedAt'
             list:
                 fields:
                     - 'id'
                     - 'name'
+                    - 'author'
+                    - { property: 'cover', type: 'image', base_path: '%app.path.article_images%' }
                     - { property: 'type', label: '私有模式' }
                     - { property: 'isUp', label: '是否置顶' }
                     - { property: 'isSupport', label: '是否推荐' }
@@ -42,6 +46,8 @@ easy_admin:
                 fields:
                     - { type: 'group', css_class: 'col-sm-8', label: '主要信息', icon: 'pencil' }
                     - { property: 'name', css_class: 'large' }
+                    - { property: 'author',label: 'Author', icon: 'user' }
+                    - { property: 'imageFile', type: 'vich_image',label: 'Cover' }
                     - { property: 'content', id: 'editor', type: 'textarea' }
                     - { type: 'divider' }
                     - { property: 'categories', type: 'easyadmin_autocomplete' }

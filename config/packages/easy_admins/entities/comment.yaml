@@ -46,5 +46,5 @@ easy_admin:
                     - { type: 'divider' }
                     - { property: 'user', type: 'easyadmin_autocomplete' }
                     - { type: 'group', css_class: 'col-sm-4', label: '留言设置', icon: 'cube' }
-                    - { property: 'type', help: '仅博主可见.' }
+                    - { property: 'type', label: '仅博主可见' }
                 actions:

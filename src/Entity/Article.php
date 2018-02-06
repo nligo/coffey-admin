@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity
  * @ORM\Table(options={"comment": "文章内容表"})
+ * @Vich\Uploadable
  */
 class Article implements _CreatableInterface, _UpdatableInterface
 {
@@ -60,11 +63,52 @@ class Article implements _CreatableInterface, _UpdatableInterface
      */
     private $categories;
 
-
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="article")
      */
     private $comments;
+
+    /**
+     * It only stores the name of the image associated with the product.
+     *
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $cover;
+
+    /**
+     * This unmapped property stores the binary contents of the image file
+     * associated with the product.
+     *
+     * @Vich\UploadableField(mapping="article_image", fileNameProperty="cover")
+     *
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setAuthor(User $author)
+    {
+        $this->author = $author;
+    }
+
 
     public function __construct()
     {
@@ -223,5 +267,36 @@ class Article implements _CreatableInterface, _UpdatableInterface
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * @param string $cover
+     */
+    public function setCover($cover)
+    {
+        $this->cover = $cover;
+    }
+
+    /**
+     * @param File $image
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+    }
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 }
